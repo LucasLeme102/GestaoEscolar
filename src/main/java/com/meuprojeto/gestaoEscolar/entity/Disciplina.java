@@ -4,6 +4,8 @@ package com.meuprojeto.gestaoEscolar.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "diciplinas")
 @Builder
@@ -23,4 +25,8 @@ public class Disciplina {
     @ManyToOne
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
+
+
+    @ManyToMany(mappedBy = "disciplinas")
+    private List<Aluno> aluno;
 }

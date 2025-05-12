@@ -5,9 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public record AlunoDto(@NotBlank String name,
                        @Email String email,
                        @Past LocalDate dataNascimento,
-                       EnderecoDto endereco) {
+                       EnderecoDto endereco,
+                       List<Long> disciplinasIds) {
 }

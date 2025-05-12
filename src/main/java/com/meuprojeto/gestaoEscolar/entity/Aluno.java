@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "alunos")
@@ -41,4 +43,10 @@ public class Aluno implements Serializable {
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
+
+    @ManyToMany
+    @JoinTable(name = "aluno_disciplina",
+    joinColumns = @JoinColumn(name = "aluno_id"),
+    inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
+    private List<Disciplina> disciplinas = new ArrayList<>();
 }
